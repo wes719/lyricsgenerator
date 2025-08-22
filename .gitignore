@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Envs & creds
+.env
+credentials.json
+token.json
+
+# OS
+.DS_Store
+Thumbs.db
