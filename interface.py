@@ -1,5 +1,12 @@
 
+# .env loader (safe even if python-dotenv isn't installed)
+try:
+    from dotenv import load_dotenv  # pip install python-dotenv
+except Exception:
+    def load_dotenv(*args, **kwargs):  # no-op fallback
+        return None
 load_dotenv()
+
 #!/usr/bin/env python3
 """
 frontend.py – polished UI for the worship slides generator
