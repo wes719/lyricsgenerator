@@ -1,4 +1,4 @@
-# 🎵 Worship Slides Generator
+# Worship Slides Generator
 
 Create **worship lyric decks in minutes**.\
 This local Python app lets you enter a setlist, pull lyrics from Genius,
@@ -6,15 +6,15 @@ and generate a styled Google Slides deck automatically.
 
 ------------------------------------------------------------------------
 
-## 📑 Table of Contents
+## Table of Contents
 
--   [What You Get](#-what-you-get)
--   [Requirements](#-requirements)
--   [Quick Start (TL;DR)](#-quick-start-tldr)
+-   [What You Get](#what-you-get)
+-   [Requirements](#requirements)
+-   [Quick Start (TL;DR)](#quick-start-tldr)
 -   [Step 1 --- Get a Genius Access
-    Token](#-step-1--get-a-genius-access-token)
+    Token](#step-1--get-a-genius-access-token)
 -   [Step 2 --- Google Cloud Setup (Slides API +
-    OAuth)](#-step-2--google-cloud-setup-slides-api--oauth)
+    OAuth)](#step-2--google-cloud-setup-slides-api--oauth)
     -   [2A. Create a Google Cloud
         project](#2a-create-a-google-cloud-project)
     -   [2B. Enable the Google Slides
@@ -26,41 +26,40 @@ and generate a styled Google Slides deck automatically.
     -   [2E. Place credentials.json in the project
         folder](#2e-place-credentialsjson-in-the-project-folder)
 -   [Step 3 --- Configure Environment
-    Variables](#-step-3--configure-environment-variables)
--   [Step 4 --- Install & Run](#-step-4--install--run)
--   [How It Works (high-level)](#-how-it-works-high-level)
--   [Troubleshooting](#-troubleshooting)
--   [FAQ](#-faq)
--   [Security Notes](#-security-notes)
--   [Contributing](#-contributing)
--   [License](#-license)
+    Variables](#step-3--configure-environment-variables)
+-   [Step 4 --- Install & Run](#step-4--install--run)
+-   [How It Works (high-level)](#how-it-works-high-level)
+-   [Troubleshooting](#troubleshooting)
+-   [FAQ](#faq)
+-   [Security Notes](#security-notes)
+-   [Contributing](#contributing)
+-   [License](#license)
 
 ------------------------------------------------------------------------
 
-## 💡 What You Get
+## What You Get
 
--   🖥️ **Local web UI** -- runs entirely on your machine.\
--   🎵 **Lyrics from Genius** -- you bring your own Genius API token.\
--   📝 **Google Slides deck** -- auto-styled slides created in your
-    Google account.\
--   🖼️ **Configurable background** -- change via an environment
-    variable.\
--   🪟 **Cross-platform** -- Windows, macOS, and Linux.
+-   Local web UI -- runs entirely on your machine\
+-   Lyrics from Genius -- requires your own Genius API token\
+-   Google Slides deck -- auto-styled slides created in your Google
+    account\
+-   Configurable background -- change via an environment variable\
+-   Cross-platform -- Windows, macOS, and Linux
 
 ------------------------------------------------------------------------
 
-## 📦 Requirements
+## Requirements
 
 -   Python **3.10+**
 -   A Google Account (Gmail or Google Workspace)
 -   A Genius API Access Token
 
-⚠️ **Note:** The repo does *not* contain any secrets. You will add your
-own tokens/credentials locally.
+Note: The repo does not contain any secrets. You will add your own
+tokens/credentials locally.
 
 ------------------------------------------------------------------------
 
-## ⚡ Quick Start (TL;DR)
+## Quick Start (TL;DR)
 
 ``` bash
 # 1) Clone and enter the project
@@ -87,17 +86,17 @@ cp .env.example .env
 python interface.py
 ```
 
-➡️ On first run, your browser opens for Google authorization. After
+On first run, your browser opens for Google authorization. After
 success, `token.json` appears locally and the app is ready.
 
 ------------------------------------------------------------------------
 
-## 🔑 Step 1 --- Get a Genius Access Token
+## Step 1 --- Get a Genius Access Token
 
 1.  Create a Genius account (if you don't have one).\
 2.  Visit: <https://genius.com/api-clients>\
 3.  Click **Create API Client**.
-    -   App Name: anything (e.g., *Worship Slides Generator*)\
+    -   App Name: anything (e.g., Worship Slides Generator)\
     -   Website URL: your GitHub repo URL (or any URL you control)\
     -   App Description: short description\
 4.  After creating, click **Generate Access Token**.\
@@ -107,11 +106,11 @@ success, `token.json` appears locally and the app is ready.
 GENIUS_ACCESS_TOKEN=your_raw_token_here
 ```
 
-⚠️ Do **not** include `Bearer`. Just paste the raw token.
+Do not include `Bearer`. Just paste the raw token.
 
 ------------------------------------------------------------------------
 
-## ☁️ Step 2 --- Google Cloud Setup (Slides API + OAuth)
+## Step 2 --- Google Cloud Setup (Slides API + OAuth)
 
 The app uses the Google Slides API via OAuth (Desktop client).
 
@@ -125,7 +124,7 @@ The app uses the Google Slides API via OAuth (Desktop client).
 -   Sidebar → **APIs & Services → Library**\
 -   Search **Google Slides API** → **Enable**
 
-*(Optional: enable Google Drive API if you want Drive uploads later)*
+(Optional: enable Google Drive API if you want Drive uploads later)
 
 ### 2C. Configure the OAuth consent screen (External → Testing)
 
@@ -134,7 +133,7 @@ The app uses the Google Slides API via OAuth (Desktop client).
 -   Fill in app info (name, support email, dev contact)\
 -   Add scope:
     -   `https://www.googleapis.com/auth/presentations`\
-    -   *(optional)* `https://www.googleapis.com/auth/drive.file`\
+    -   (optional) `https://www.googleapis.com/auth/drive.file`\
 -   Add yourself under **Test users**
 
 ### 2D. Create OAuth client credentials (Desktop app)
@@ -155,7 +154,7 @@ is created (also ignored).
 
 ------------------------------------------------------------------------
 
-## ⚙️ Step 3 --- Configure Environment Variables
+## Step 3 --- Configure Environment Variables
 
 ``` bash
 cp .env.example .env
@@ -170,7 +169,7 @@ BACKGROUND_IMAGE_URL=https://example.com/your-image.jpg   # optional
 
 ------------------------------------------------------------------------
 
-## ▶️ Step 4 --- Install & Run
+## Step 4 --- Install & Run
 
 ### Option A --- Scripts
 
@@ -197,7 +196,7 @@ python interface.py
 
 ------------------------------------------------------------------------
 
-## 🛠 How It Works (high-level)
+## How It Works (high-level)
 
 -   `interface.py`: serves a local web UI + API endpoints\
 -   `lyrics_to_slides_improved.py`: calls Google Slides API → builds
@@ -207,7 +206,7 @@ python interface.py
 
 ------------------------------------------------------------------------
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 -   **403 access_denied** → Add your account to Test users in Google
     Console → Delete `token.json` → Retry\
@@ -235,11 +234,11 @@ python interface.py
 
 ------------------------------------------------------------------------
 
-## ❓ FAQ
+## FAQ
 
 **Does this post lyrics publicly?**\
-No. Decks are created in *your* Google account. Share like normal
-Slides.
+No. Decks are created in your Google account. Share like any normal
+Slides file.
 
 **Can I change background per deck?**\
 Yes --- set `BACKGROUND_IMAGE_URL` in `.env`.
@@ -254,7 +253,7 @@ Both are git-ignored.
 
 ------------------------------------------------------------------------
 
-## 🔒 Security Notes
+## Security Notes
 
 -   Never commit `.env`, `credentials.json`, or `token.json`\
 -   `.gitignore` already excludes them\
@@ -263,15 +262,15 @@ Both are git-ignored.
 
 ------------------------------------------------------------------------
 
-## 🤝 Contributing
+## Contributing
 
 PRs welcome! Open an issue first for major changes.\
 For UI contributions, include a screenshot or GIF.
 
 ------------------------------------------------------------------------
 
-## 📜 License
+## License
 
-[MIT](./LICENSE)
+MIT
 
 ------------------------------------------------------------------------
